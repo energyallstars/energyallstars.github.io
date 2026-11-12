@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energy All Stars · Club de Cheerleading en Bogotá</title>
+<meta name="description" content="Energy Cheer All Stars: club de porrismo all star en Bogotá. Equipos desde iniciación hasta nivel 3. ¡Inscríbete!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060608; --bg2:#0f0d14; --card:#17141f; --line:rgba(255,255,255,.1);
+  --txt:#ffffff; --muted:#bdb6cc;
+  --pink:#b44dff; --cyan:#d9c2ff; --yellow:#ffffff; --violet:#7b2ff7;
+  --grad:linear-gradient(110deg,#7b2ff7,#b44dff 50%,#eadcff);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{width:min(1150px,92%);margin:auto}
+h1,h2,.big{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.5px;text-transform:uppercase;line-height:1.02}
+h2{font-size:clamp(1.9rem,6vw,3.6rem);margin-bottom:.4em;overflow-wrap:break-word;hyphens:auto}
+.kicker{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:#c9a6ff;margin-bottom:.6rem}
+.grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:90px 0;position:relative}
+.lead{color:var(--muted);font-size:1.05rem;max-width:640px}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.6rem;border-radius:999px;font-weight:700;transition:.25s;border:2px solid transparent;cursor:pointer;font-size:.95rem}
+.btn-main{background:linear-gradient(110deg,#6a1fe0,#b44dff);color:#fff;box-shadow:0 10px 30px -8px rgba(123,47,247,.55)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 16px 40px -8px rgba(123,47,247,.8)}
+.btn-ghost{border-color:rgba(255,255,255,.35)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn svg{width:20px;height:20px}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:.3s}
+nav.scrolled{background:rgba(10,6,24,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:Anton;font-size:1.35rem;letter-spacing:1px}
+.logo-mark{width:52px;height:46px;display:grid;place-items:center;font-size:1.3rem;overflow:hidden}
+.logo-mark img{width:100%;height:100%;object-fit:contain}
+.links{display:flex;gap:1.6rem;font-weight:500;font-size:.92rem}
+.links a{opacity:.85}.links a:hover{opacity:1;color:var(--cyan)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer}
+@media(max-width:860px){
+  .links{position:fixed;top:70px;left:0;right:0;flex-direction:column;background:rgba(10,6,24,.97);padding:1.5rem 6%;gap:1.1rem;transform:translateY(-130%);transition:.35s;border-bottom:1px solid var(--line)}
+  .links.open{transform:none}
+  .burger{display:block}
+}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-top:110px;overflow:hidden}
+.hero::before{content:"";pointer-events:none;position:absolute;inset:0;background:
+  radial-gradient(600px 400px at 85% 20%,rgba(180,77,255,.22),transparent 60%),
+  radial-gradient(700px 500px at 10% 80%,rgba(123,47,247,.35),transparent 60%),
+  radial-gradient(500px 400px at 60% 90%,rgba(255,255,255,.06),transparent 60%);z-index:-1}
+.hero-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;opacity:.25}
+.hero h1{font-size:clamp(2.8rem,9vw,6rem)}
+.hero h1 .l2{display:block}
+.hero p{margin:1.4rem 0 2rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:1rem}
+.hero-img{position:absolute;right:3%;bottom:0;height:min(82%,700px);z-index:-1;filter:drop-shadow(0 0 50px rgba(123,47,247,.55))}
+.elogo{position:relative;width:min(460px,86vw);aspect-ratio:900/837;margin:0 0 1rem -2%;animation:float 6s ease-in-out infinite}
+.elogo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;filter:drop-shadow(0 0 28px rgba(180,77,255,.55));transition:filter .08s}
+.elogo.flash .elogo-img{filter:brightness(1.45) saturate(1.3) drop-shadow(0 0 40px rgba(225,170,255,.95))}
+.elogo-shine{position:absolute;inset:0;z-index:3;pointer-events:none;mix-blend-mode:screen;
+  -webkit-mask:url(fotos/logo.webp) center/contain no-repeat;mask:url(fotos/logo.webp) center/contain no-repeat;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.9) 49%,rgba(214,150,255,.7) 51%,transparent 58%);background-size:300% 100%;animation:shine 3.8s ease-in-out infinite}
+@keyframes shine{0%,35%{background-position:100% 0}75%,100%{background-position:0 0}}
+.bolts{position:absolute;inset:-12%;width:124%;height:124%;overflow:visible;pointer-events:none}
+.bolts.back{z-index:1}.bolts.front{z-index:4}
+.bolts g{animation:zap .5s linear forwards}
+@keyframes zap{0%{opacity:0}8%{opacity:1}20%{opacity:.25}30%{opacity:1}55%{opacity:.85}100%{opacity:0}}
+.aura{position:absolute;inset:8%;z-index:0;border-radius:50%;background:radial-gradient(circle,rgba(123,47,247,.45),transparent 65%);filter:blur(10px);transition:opacity .1s;opacity:.6}
+.elogo.flash .aura{opacity:1}
+@media(prefers-reduced-motion:reduce){.elogo,.elogo-shine{animation:none}.bolts{display:none}}
+@keyframes float{50%{transform:translateY(-18px) rotate(3deg)}}
+.stars span{position:absolute;color:var(--yellow);animation:tw 2.4s infinite;font-size:1.2rem}
+@keyframes tw{50%{opacity:.2;transform:scale(.6)}}
+@media(max-width:860px){.hero-img{height:52%;right:-14%;opacity:.25}}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;position:relative;z-index:2}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem;text-align:center}
+.stat .big{font-size:2.8rem}
+.stat small{color:var(--muted);font-weight:500}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* HISTORIA */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.split>*{min-width:0}
+html,body{overflow-x:hidden}
+@media(max-width:600px){.staff{grid-template-columns:1fr 1fr}.coach{padding:1.1rem .7rem}.vals{gap:.8rem}}
+.photo-stack{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 50% 30%,#3b1a6e,#0f0d14 75%);border:1px solid var(--line)}
+.photo-stack img{width:100%;height:100%;object-fit:contain;padding:6% 4% 0}
+.ph{display:grid;place-items:center;text-align:center;color:rgba(255,255,255,.85);font-weight:600;padding:1rem;height:100%}
+.ph .ico{font-size:3rem}
+.timeline{margin-top:2rem;border-left:3px solid;border-image:var(--grad) 1;padding-left:1.4rem;display:grid;gap:1.4rem}
+.tl b{font-family:Anton;font-size:1.4rem;color:#c9a6ff;display:block;letter-spacing:1px}
+.tl p{color:var(--muted)}
+
+/* VALORES */
+.vals{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem}
+.val{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent);border:1px solid var(--line);border-radius:22px;padding:1.6rem;transition:.3s}
+.val:hover{transform:translateY(-6px);border-color:rgba(34,228,255,.5)}
+.val .ico{font-size:2.2rem;margin-bottom:.6rem}
+.val h3{font-size:1.1rem;margin-bottom:.3rem}
+.val p{color:var(--muted);font-size:.92rem}
+@media(max-width:860px){.vals{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.vals{grid-template-columns:1fr}}
+
+/* EQUIPOS */
+.alt{background:var(--bg2)}
+.teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.1rem;margin-top:2.5rem}
+.team{border-radius:22px;padding:1.5rem 1.3rem;position:relative;overflow:hidden;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);transition:.3s;background:var(--card)}
+.team::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 0%,var(--c),transparent 65%);opacity:.75;transition:.3s}
+.team:hover{transform:translateY(-6px) scale(1.02)}
+.team:hover::before{opacity:1}
+.team>*{position:relative}
+.team .lvl{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(0,0,0,.4);padding:.25rem .7rem;border-radius:99px;align-self:flex-start}
+.team h3{font-family:Anton;font-weight:400;font-size:2rem;letter-spacing:1px;margin-top:.5rem}
+.team p{font-size:.85rem;color:#e5defa}
+
+.team .meta{margin-top:.7rem;display:grid;gap:.25rem;font-size:.82rem;color:#e5defa}
+.team .meta b{color:#fff;font-weight:600}
+.team-logo{width:96px;height:96px;margin-bottom:.9rem;object-fit:contain;border-radius:14px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+.team{min-height:0;justify-content:flex-start}
+.team .lvl{margin-bottom:0}
+.team-photo{margin:-1.5rem -1.3rem 1rem;width:calc(100% + 2.6rem);max-width:none;aspect-ratio:4/3;object-fit:cover;border-bottom:1px solid var(--line);cursor:pointer}
+.staff{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.1rem;margin-top:2.5rem}
+.coach{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:1.5rem;text-align:center}
+.av{width:78px;height:78px;border-radius:50%;margin:0 auto .8rem;background:var(--grad);display:grid;place-items:center;font-family:Anton;font-size:1.7rem;overflow:hidden}
+.av img{width:100%;height:100%;object-fit:cover}
+.coach small{color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid var(--line);padding:.45rem 1rem;border-radius:99px;font-size:.85rem;font-weight:600;margin-bottom:1.2rem}
+/* GALERIA */
+.feed-box{margin-top:2.5rem}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.gallery figure{aspect-ratio:1;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#4a1f8a,#121018 78%);position:relative;cursor:pointer;border:1px solid var(--line)}
+.gallery img{width:100%;height:100%;object-fit:contain;padding:6% 6% 0;transition:.4s}
+.gallery figure:hover img{transform:scale(1.07)}
+.gallery .ph{background:linear-gradient(135deg,rgba(255,46,147,.35),rgba(34,228,255,.25))}
+@media(max-width:600px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.social-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;justify-content:center}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;place-items:center;z-index:99;padding:4%}
+.lb.on{display:grid}.lb img{max-height:88vh;border-radius:14px;background:radial-gradient(circle,#3b1a6e,#060608 75%)}
+.event{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;background:linear-gradient(120deg,#2a1150,#17141f);border:1px solid rgba(180,77,255,.4);border-radius:26px;padding:1.6rem}
+.event img{width:110px;border-radius:16px}
+.event h3{font-family:Anton;font-weight:400;font-size:1.9rem;letter-spacing:1px}
+.event p{color:var(--muted)}
+@media(max-width:700px){.event{grid-template-columns:1fr;text-align:center}.event img{margin:auto}}
+
+/* LOGROS */
+.wins{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem;margin-top:2.5rem}
+.win{display:flex;gap:1rem;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.2rem}
+.medal{font-size:2.3rem}
+.win b{display:block}.win small{color:var(--muted)}
+
+/* PLANES */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem;margin-top:2.5rem}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:1.8rem;text-align:center}
+.plan.hot{background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;border:2px solid transparent}
+.plan .big{font-size:2.6rem;margin:.4rem 0}
+.plan p{color:var(--muted);font-size:.9rem}
+
+/* HORARIOS + FAQ */
+.sched{display:grid;gap:.6rem;margin-top:1.5rem}
+.sched div{display:flex;justify-content:space-between;gap:1rem;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.9rem 1.2rem}
+.sched span:last-child{color:var(--cyan);font-weight:600;text-align:right}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.3rem;margin-bottom:.7rem}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:var(--pink);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:.6rem}
+
+/* CTA + CONTACTO */
+.cta{background:var(--grad);border-radius:32px;padding:clamp(2rem,6vw,4rem);text-align:center;position:relative;overflow:hidden}
+.cta h2{color:#fff}
+.cta p{max-width:560px;margin:0 auto 1.8rem;color:#fff;opacity:.92}
+.cta .btn{background:#fff;color:#1b1140}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;margin-top:2.5rem}
+.c-item{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem;display:block;transition:.25s}
+a.c-item:hover{border-color:var(--pink)}
+.c-item .ico{font-size:1.8rem}
+.c-item b{display:block;margin:.3rem 0 .1rem}
+.c-item span{color:var(--muted);font-size:.92rem;word-break:break-word}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.88rem;text-align:center}
+.wa-float{position:fixed;right:18px;bottom:18px;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 25px rgba(0,0,0,.4);z-index:60;animation:pulse 2.5s infinite}
+.wa-float svg{width:32px;height:32px;fill:#fff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.center{text-align:center}.center .lead{margin:auto}
+</style>
+</head>
+<body>
+
+<script>
+/* ======================================================================
+   ✏️  ZONA PARA EDITAR  —  Cambia SOLO lo que está entre comillas.
+   Guarda el archivo y la página se actualiza sola.
+   ====================================================================== */
+const CLUB = {
+  nombre: "Energy",
+  apellido: "All Stars",
+  eslogan: "Club deportivo de cheerleading fundado en julio de 2017, con reconocimiento deportivo del IDRD, sede propia y entrenadores con más de 20 años de experiencia. Formamos atletas desde los 5 años hasta nivel 3.",
+  logo: "fotos/logo.webp",
+  fotoPortada: "",        // ej: "fotos/portada.jpg"
+  fotoHistoria: "fotos/piramide.webp",
+
+  // Redes y contacto
+  whatsapp: "573143867977",   // número con 57 adelante, sin espacios ni +
+  telefonoVisible: "314 386 7977",
+  instagram: "energy_all_star",   // usuario sin @
+  facebook: "https://www.facebook.com/share/19voq7xPz5/",
+  tiktok: "",                          // usuario sin @ (vacío = no se muestra)
+  correo: "",
+  direccion: "Cra 68 A # 37 Bis – 17 Sur, barrio Alquería La Fragua (detrás del Homecenter de la Av. 68)",
+  linkMapa: "https://maps.google.com/?q=Carrera+68A+%2337B-17+Sur+Bogota",
+  portalPapas: "https://energyallstars.github.io/energycheer/",
+
+  // 📸 Instagram automático: pega aquí tu ID de Behold (behold.so, gratis).
+  // Mientras esté vacío se muestra la galería de abajo.
+  beholdFeedId: "",
+
+  // Galería manual (sube las fotos a la carpeta "fotos")
+  galeria: ["fotos/g1.webp","fotos/g2.webp","fotos/g4.webp","fotos/g5.webp","fotos/g6.webp","fotos/g7.webp","fotos/g8.webp","fotos/g9.webp"],
+
+  // Próximo evento (vacío "" = no se muestra)
+  evento: {
+    nombre: "Christmas Championship 2K26",
+    fecha: "Domingo 15 de noviembre de 2026",
+    lugar: "Colegio San Viator · Autopista Norte #209-51, Bogotá",
+    imagen: "fotos/christmas.webp"
+  },
+
+  numeros: [
+    ["2017", "Año de fundación"], ["12", "Equipos"], ["+20", "Años de experiencia del cuerpo técnico"], ["IDRD", "Reconocimiento deportivo"]
+  ],
+
+  historia: [
+    "Energy All Stars es un club deportivo de cheerleading fundado en julio de 2017 en Bogotá. Desde el primer día nos propusimos crear un espacio seguro y adecuado para la práctica del porrismo, dirigido por profesionales del entrenamiento deportivo.",
+    "Hoy contamos con sede propia, reconocimiento deportivo otorgado por el IDRD y doce equipos que van desde la iniciación hasta el nivel 3. Nuestros entrenadores y directivos tienen más de 20 años de experiencia y una sólida formación en el deporte."
+  ],
+  lineaDeTiempo: [
+    ["2017", "En julio nace Energy All Stars, con un sueño: hacer brillar a nuestros deportistas en el tapete."],
+    ["IDRD", "Obtenemos el reconocimiento deportivo del Instituto Distrital de Recreación y Deporte."],
+    ["Sede", "Abrimos nuestra sede propia en Alquería La Fragua, junto a la Av. 68."],
+    ["2025", "Energy Black se corona campeón Nivel 1 Senior Mixto en el Invitacional de Campeones de Capital Cheer Colombia."],
+    ["2026", "12 equipos activos, de iniciación a nivel 3, rumbo a torneos nacionales e internacionales."]
+  ],
+
+  // Cuerpo técnico: [nombre, cargo]
+  equipoTecnico: [
+    ["José Edwin Cárdenas", "Entrenador y director"],
+    ["José Vásquez Castro", "Entrenador y director"],
+    ["Valentina Bustos", "Coach"],
+    ["Sebastián Ochoa", "Coach"],
+    ["Sofía Flórez", "Coach"]
+  ],
+
+  // Equipos: [nombre, nivel, color, edad, horario, coach, logo, FOTO DEL EQUIPO]
+  // Para poner la foto de un equipo: súbela a la carpeta fotos/equipos y escribe su nombre al final, ej: "fotos/equipos/galaxy-foto.jpg"
+  equipos: [
+    ["Galaxy", "Equipo competitivo", "#a78bfa", "", "", "", "fotos/equipos/galaxy.webp", ""],
+    ["Fame", "Equipo competitivo", "#ff4fb8", "", "", "", "fotos/equipos/fame.webp", ""],
+    ["Nitro Pink", "Iniciación", "#ff6ad5", "5 a 12 años", "Mar 6:50–8:50 pm · Dom 7–9 am", "Edwin Cárdenas", "fotos/equipos/nitro.webp", ""],
+    ["White Plus", "1.1 Mini", "#ffffff", "5 a 8 años", "Mar 6:50–8:50 pm · Dom 9–11 am", "Edwin Cárdenas", "fotos/equipos/white.webp", ""],
+    ["Nitro Green", "1.1 Prep · Nivel 1 Junior", "#7dffa8", "12 a 16 años", "Mié 6:30–8:30 pm · Jue 6–8 pm", "Sebastián Ochoa", "fotos/equipos/green.webp", ""],
+    ["Nitro Blue", "1.1 Prep · Nivel 1 Youth", "#6fb6ff", "8 a 12 años", "Jue 5–8 pm · Dom 8–10 am", "Valentina Bustos", "fotos/equipos/blue.webp", ""],
+    ["Glow", "1.1 Prep · Nivel 1 Junior", "#c6ff6a", "12 a 16 años", "Vie 6:50–8:50 pm · Dom 11 am–1 pm", "Edwin Cárdenas", "fotos/equipos/glow.webp", "fotos/equipos/glow-2025.webp"],
+    ["Diamonds", "Nivel 1 Youth · Femenino", "#e07bff", "8 a 12 años", "Jue 5–8 pm · Dom 7–10 am", "José Vásquez", "fotos/equipos/diamonds.webp", ""],
+    ["Purple", "Nivel 1 Junior · Femenino", "#b44dff", "12 a 16 años", "Mié 5–8 pm · Dom 8–11 am", "José Vásquez y Valentina Bustos", "fotos/equipos/purple.webp", ""],
+    ["Black", "Nivel 1 Senior · Femenino", "#e8e8e8", "14 a 18 años", "Vie 5:30–8:30 pm · Dom 6–9 am", "Sofía Flórez y José Vásquez", "fotos/equipos/black.webp", "fotos/equipos/black-2025.webp"],
+    ["Thunder", "Nivel 2 Junior · Mixto", "#ffd23f", "12 a 16 años", "Mar 5–8 pm · Dom 10 am–1 pm", "José Vásquez y Valentina Bustos", "fotos/equipos/thunder.webp", ""],
+    ["Electric", "Nivel 3 Junior · Mixto", "#9dff4a", "12 a 16 años", "Vie 5–8 pm · Dom 12–3 pm", "José Vásquez y Valentina Bustos", "fotos/equipos/electric.webp", ""]
+  ],
+
+  // Logros: [medalla, título, competencia · año]  (vacío = se oculta la sección)
+  logros: [
+    ["🏆", "Campeón 2025 · Energy Black", "Nivel 1 Senior Mixto · Invitacional de Campeones, Capital Cheer Colombia"]
+  ],
+
+  mostrarTarifas: true,
+  tarifas: [
+    ["Mensualidad", "$70.000", "Pagando hasta el día 15 del mes ($80.000 después)", false],
+    ["Plan trimestral", "$187.000", "Tres meses consecutivos con descuento", true],
+    ["Plan familiar", "$118.000", "Mensualidad para dos hermanos", false],
+    ["Matrícula", "$30.000", "Pago anual por deportista", false]
+  ],
+  notaTarifas: "La entrada al gimnasio se paga aparte en recepción los días de entrenamiento presencial. Pagos en efectivo en el club o por Nequi.",
+
+  // Clases semipersonalizadas de gimnasia (Energy Athletes Packs)
+  semiPersonalizados: [
+    ["Basic", "1 lección", "$22.000"],
+    ["Pack 4", "4 lecciones", "$77.000"],
+    ["Premium", "8 lecciones", "$143.000"]
+  ],
+
+  preguntas: [
+    ["¿Desde qué edad pueden entrar?", "Desde los 5 años. Los equipos Nitro Pink y Nitro White reciben a los más pequeños, y hay equipos hasta los 18 años."],
+    ["¿Necesitan experiencia previa?", "No. Nitro Pink y Nitro Green son para deportistas que inician su proceso y no piden habilidades previas. Los demás equipos tienen requisitos técnicos por nivel."],
+    ["¿Puedo ir a una clase de prueba?", "¡Claro! Escríbenos por WhatsApp y te ubicamos en el equipo según edad y nivel."],
+    ["Vengo de otro club, ¿qué necesito?", "El paz y salvo por todo concepto del club anterior."],
+    ["¿Qué uniforme se necesita?", "El uniforme de entrenamiento es obligatorio: camiseta del equipo, bicicletero negro, moño del equipo, tenis Energy y maleta. El uniforme de presentación se puede pagar por abonos."],
+    ["¿Cómo se paga?", "En efectivo directamente en el club o por Nequi. Las familias inscritas consultan sus pagos en el portal de papás."]
+  ]
+};
+/* ====================== FIN DE LA ZONA PARA EDITAR ===================== */
+</script>
+
+<nav id="nav"><div class="wrap nav-in">
+  <a href="#inicio" class="logo"><span class="logo-mark" id="logoMark">★</span><span id="navName"></span></a>
+  <div class="links" id="links">
+    <a href="#historia">Historia</a><a href="#equipos">Equipos</a><a href="#galeria">Galería</a>
+    <a href="#staff">Coaches</a><a href="#planes" id="navPlanes">Planes</a><a href="#contacto">Contacto</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menú">☰</button>
+</div></nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-bg" id="heroBg"></div>
+  <img class="hero-img" src="fotos/hero.webp" alt="Deportista Energy All Stars">
+  <div class="stars"><span style="top:20%;left:8%">✦</span><span style="top:70%;left:45%;animation-delay:.8s">✦</span><span style="top:35%;left:55%;animation-delay:1.4s">✧</span><span style="top:82%;left:85%;animation-delay:.4s">✦</span></div>
+  <div class="wrap">
+    <div class="elogo" id="elogo" role="img" aria-label="Logo Energy All Stars">
+      <div class="aura"></div>
+      <svg class="bolts back" viewBox="0 0 1000 930" id="boltsBack"></svg>
+      <img class="elogo-img" src="fotos/logo.webp" alt="Logo Energy All Stars">
+      <div class="elogo-shine"></div>
+      <svg class="bolts front" viewBox="0 0 1000 930" id="boltsFront"><defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs></svg>
+    </div><span class="badge">🏅 Reconocimiento deportivo IDRD · Desde 2017</span><br><span class="kicker">Club de cheerleading all star · Bogotá</span>
+    <h1><span id="h1a"></span><span class="l2 grad-txt" id="h1b"></span></h1>
+    <p class="lead" id="slogan"></p>
+    <div class="hero-ctas">
+      <a class="btn btn-main" id="ctaWa" target="_blank" rel="noopener">⭐ Inscríbete ahora</a>
+      <a class="btn btn-ghost" href="#equipos">Conoce los equipos</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="stats reveal" id="stats"></div></div>
+
+<div class="wrap" id="eventoBox" style="margin-top:3rem"></div>
+
+<section id="historia"><div class="wrap split">
+  <div class="reveal">
+    <span class="kicker">Nuestra historia</span>
+    <h2>Más que un club, <span class="grad-txt">una familia</span></h2>
+    <div id="historiaTxt" class="lead"></div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+  <div class="photo-stack reveal" id="fotoHistoria"></div>
+</div>
+<div class="wrap"><div class="vals">
+  <div class="val reveal"><div class="ico">🔥</div><h3>Pasión</h3><p>Entrenamos con el corazón en cada salto, stunt y rutina.</p></div>
+  <div class="val reveal"><div class="ico">🤝</div><h3>Equipo</h3><p>Nadie vuela sola: la confianza es nuestra base.</p></div>
+  <div class="val reveal"><div class="ico">🛡️</div><h3>Seguridad</h3><p>Progresión técnica responsable con entrenadores capacitados.</p></div>
+  <div class="val reveal"><div class="ico">⭐</div><h3>Disciplina</h3><p>Valores que se quedan para la vida, dentro y fuera del tapete.</p></div>
+</div></div></section>
+
+<section id="staff" class="alt"><div class="wrap">
+  <div class="center reveal"><span class="kicker">Cuerpo técnico</span><h2>Formados para <span class="grad-txt">formar campeones</span></h2>
+  <p class="lead">Entrenadores y directivos con más de 20 años de experiencia y alta formación en el deporte.</p></div>
+  <div class="staff" id="staffGrid"></div>
+</div></section>
+
+<section id="equipos"><div class="wrap">
+  <div class="center reveal"><span class="kicker">Nuestros equipos</span><h2>Un equipo para <span class="grad-txt">cada nivel</span></h2>
+  <p class="lead">De iniciación a nivel 3: cada deportista entrena en el equipo que corresponde a su edad y habilidades.</p></div>
+  <div class="teams" id="teams"></div>
+</div></section>
+
+<section id="galeria"><div class="wrap">
+  <div class="center reveal"><span class="kicker">En vivo desde Instagram</span><h2>Así se vive <span class="grad-txt">la energía</span></h2>
+  <p class="lead">Lo último que publicamos en redes aparece aquí automáticamente.</p></div>
+  <div class="feed-box reveal" id="feedBox"></div>
+  <div class="social-row" id="socialRow"></div>
+</div></section>
+
+<section id="logros" class="alt"><div class="wrap">
+  <div class="center reveal"><span class="kicker">Logros</span><h2>Medallas con <span class="grad-txt">sello Energy</span></h2></div>
+  <div class="wins" id="wins"></div>
+</div></section>
+
+<section id="planes"><div class="wrap">
+  <div class="center reveal"><span class="kicker">Planes</span><h2>Únete a <span class="grad-txt">la familia</span></h2></div>
+  <div class="plans" id="plans"></div>
+</div></section>
+
+<section class="alt"><div class="wrap split" style="align-items:start">
+  <div class="reveal"><span class="kicker">Energy Athletes Packs</span><h2>Clases <span class="grad-txt">semipersonalizadas</span></h2>
+    <p class="lead">Lecciones de gimnasia con atención directa de nuestro equipo técnico, según los objetivos de cada atleta.</p>
+    <div class="sched" id="semi"></div></div>
+  <div class="reveal"><span class="kicker">Preguntas frecuentes</span><h2>Resolvemos <span class="grad-txt">tus dudas</span></h2>
+    <div id="faq"></div></div>
+</div></section>
+
+<section id="contacto"><div class="wrap">
+  <div class="cta reveal">
+    <h2>¿Lista para brillar?</h2>
+    <p>Agenda una clase de prueba y descubre por qué el porrismo cambia vidas.</p>
+    <a class="btn" id="ctaWa2" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+  </div>
+  <div class="contact" id="contact"></div>
+</div></section>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.7 8.7 0 0 1-4.3-3.8c-.3-.5.3-.5 1-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.5 6.5 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 5c2.1.9 2.9 1 4 .8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.3z"/></svg></a>
+<div class="lb" id="lb"><img id="lbImg" alt=""></div>
+
+<script>
+const $=id=>document.getElementById(id), C=CLUB;
+const wa=`https://wa.me/${C.whatsapp}?text=${encodeURIComponent("¡Hola Energy All Stars! Quiero información para inscribirme 💜⭐")}`;
+const ig=`https://instagram.com/${C.instagram}`;
+
+document.title=`${C.nombre} ${C.apellido} · Club de Cheerleading en Bogotá`;
+$("navName").textContent=`${C.nombre}`;
+$("h1a").textContent=C.nombre; $("h1b").textContent=C.apellido; $("slogan").textContent=C.eslogan;
+if(C.logo) $("logoMark").innerHTML=`<img src="${C.logo}" alt="logo">`;
+if(C.fotoPortada) $("heroBg").style.backgroundImage=`url('${C.fotoPortada}')`;
+["ctaWa","ctaWa2","waFloat"].forEach(i=>$(i).href=wa);
+
+$("stats").innerHTML=C.numeros.map(([n,t])=>`<div class="stat"><div class="big grad-txt">${n}</div><small>${t}</small></div>`).join("");
+$("historiaTxt").innerHTML=C.historia.map(p=>`<p style="margin-bottom:.8rem">${p}</p>`).join("");
+$("timeline").innerHTML=C.lineaDeTiempo.map(([a,t])=>`<div class="tl"><b>${a}</b><p>${t}</p></div>`).join("");
+$("fotoHistoria").innerHTML=C.fotoHistoria?`<img src="${C.fotoHistoria}" alt="Equipo Energy Cheer">`:`<div class="ph"><div><div class="ico">📸</div>Aquí va una foto del club</div></div>`;
+
+$("teams").innerHTML=C.equipos.map(([n,l,c,e,h,co,lg,ft])=>`<div class="team reveal" style="--c:${c}">${ft?`<img class="team-photo" src="${ft}" alt="Equipo ${n}">`:""}${lg?`<img class="team-logo" src="${lg}" alt="${n}">`:""}<span class="lvl">${l}</span><h3 style="color:${c}">${n}</h3><div class="meta">${e?`<span>👤 <b>${e}</b></span>`:""}${h?`<span>🕒 ${h}</span>`:""}${co?`<span>📣 Coach: ${co}</span>`:""}</div></div>`).join("");
+$("staffGrid").innerHTML=C.equipoTecnico.map(([n,c,f])=>`<div class="coach reveal"><div class="av">${f?`<img src="${f}" alt="${n}">`:n.split(" ").filter(w=>w.length>2).slice(0,2).map(w=>w[0]).join("")}</div><b>${n}</b><br><small>${c}</small></div>`).join("");
+
+if(C.evento&&C.evento.nombre){$("eventoBox").innerHTML=`<div class="event reveal">${C.evento.imagen?`<img src="${C.evento.imagen}" alt="${C.evento.nombre}">`:""}<div><span class="kicker">Próximo evento</span><h3>${C.evento.nombre}</h3><p>📅 ${C.evento.fecha}<br>📍 ${C.evento.lugar}</p></div><a class="btn btn-main" href="${ig}" target="_blank" rel="noopener">Síguelo en vivo</a></div>`}else $("eventoBox").remove();
+// Galería: Behold (automático) o fotos manuales
+if(C.beholdFeedId){
+  $("feedBox").innerHTML=`<behold-widget feed-id="${C.beholdFeedId}"></behold-widget>`;
+  const s=document.createElement("script");s.type="module";s.src="https://w.behold.so/widget.js";document.head.append(s);
+}else{
+  const fotos=C.galeria.length?C.galeria:Array(6).fill("");
+  $("feedBox").innerHTML=`<div class="gallery">${fotos.map(f=>`<figure>${f?`<img src="${f}" alt="Energy Cheer">`:`<div class="ph"><div><div class="ico">✨</div>Foto</div></div>`}</figure>`).join("")}</div>`;
+  document.querySelectorAll(".gallery img").forEach(im=>im.parentElement.onclick=()=>{$("lbImg").src=im.src;$("lb").classList.add("on")});
+}
+$("lb").onclick=()=>$("lb").classList.remove("on");
+let soc=`<a class="btn btn-main" href="${ig}" target="_blank" rel="noopener">📷 Síguenos en Instagram</a><a class="btn btn-ghost" href="${C.facebook}" target="_blank" rel="noopener">👍 Facebook</a>`;
+if(C.tiktok) soc+=`<a class="btn btn-ghost" href="https://tiktok.com/@${C.tiktok}" target="_blank" rel="noopener">🎵 TikTok</a>`;
+$("socialRow").innerHTML=soc;
+
+if(!C.logros.length){$("logros").remove();}
+else $("wins").innerHTML=C.logros.map(([m,t,d])=>`<div class="win reveal"><span class="medal">${m}</span><div><b>${t}</b><small>${d}</small></div></div>`).join("");
+
+if(C.mostrarTarifas){
+  $("plans").innerHTML=C.tarifas.map(([n,p,d,h])=>`<div class="plan reveal ${h?"hot":""}">${h?'<span class="kicker">⭐ Recomendado</span>':""}<h3>${n}</h3><div class="big grad-txt">${p}</div><p>${d}</p></div>`).join("")+
+  `<p class="center" style="grid-column:1/-1;color:var(--muted);font-size:.9rem">${C.notaTarifas} · <a href="${C.portalPapas}" style="color:var(--cyan)">Portal de papás →</a></p>`;
+}else{ $("planes").remove(); $("navPlanes").remove(); }
+
+$("semi").innerHTML=C.semiPersonalizados.map(([n,l,p])=>`<div><span><b>${n}</b> · ${l}</span><span>${p}</span></div>`).join("");
+$("faq").innerHTML=C.preguntas.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+
+const items=[
+  ["💬","WhatsApp",C.telefonoVisible,wa],
+  ["📍","Dirección",C.direccion,C.linkMapa],
+  ["📷","Instagram","@"+C.instagram,ig],
+  ["👨‍👩‍👧","Portal de papás","Pagos e inscripciones",C.portalPapas]
+];
+if(C.correo) items.push(["✉️","Correo",C.correo,"mailto:"+C.correo]);
+$("contact").innerHTML=items.map(([i,t,s,h])=>`<a class="c-item reveal" href="${h}" target="_blank" rel="noopener"><div class="ico">${i}</div><b>${t}</b><span>${s}</span></a>`).join("");
+$("foot").innerHTML=`★ ${C.nombre} ${C.apellido} · Bogotá, Colombia · © ${new Date().getFullYear()}`;
+
+// ⚡ Rayos sobre y a través del logo
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const NS='http://www.w3.org/2000/svg', box=$("elogo"), back=$("boltsBack"), front=$("boltsFront");
+  const W=1000,H=930, R=(a,b)=>a+Math.random()*(b-a);
+  function jag(x1,y1,x2,y2,d,pts){
+    if(d<14){pts.push([x2,y2]);return}
+    const mx=(x1+x2)/2+R(-d,d)*.5, my=(y1+y2)/2+R(-d,d)*.5;
+    jag(x1,y1,mx,my,d/2,pts); jag(mx,my,x2,y2,d/2,pts);
+  }
+  function path(x1,y1,x2,y2,d){const p=[[x1,y1]];jag(x1,y1,x2,y2,d,p);return "M"+p.map(q=>q.map(Math.round).join(" ")).join(" L")}
+  function edge(){const s=Math.floor(R(0,4));return s===0?[R(0,W),-20]:s===1?[W+20,R(0,H)]:s===2?[R(0,W),H+20]:[-20,R(0,H)]}
+  function line(g,d,w,col,op,f){const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('fill','none');p.setAttribute('stroke',col);p.setAttribute('stroke-width',w);p.setAttribute('stroke-linejoin','round');p.setAttribute('stroke-linecap','round');p.setAttribute('opacity',op);if(f)p.setAttribute('filter','url(#glow)');g.appendChild(p)}
+  function strike(){
+    const layer=Math.random()<.55?front:back, g=document.createElementNS(NS,'g');
+    const [x1,y1]=edge(); let [x2,y2]=edge(); if(Math.hypot(x2-x1,y2-y1)<500)[x2,y2]=[W-x1,H-y1];
+    const main=path(x1,y1,x2,y2,320);
+    line(g,main,18,'#9b3cff',.55,true); line(g,main,6,'#e6c8ff',.95,true); line(g,main,2.2,'#ffffff',1,false);
+    for(let i=0;i<Math.floor(R(1,4));i++){
+      const t=R(.2,.8), bx=x1+(x2-x1)*t, by=y1+(y2-y1)*t, ex=bx+R(-260,260), ey=by+R(-220,220);
+      const br=path(bx,by,ex,ey,150); line(g,br,8,'#b44dff',.5,true); line(g,br,1.6,'#ffffff',.9,false);
+    }
+    layer.appendChild(g); box.classList.add('flash');
+    setTimeout(()=>box.classList.remove('flash'),110);
+    setTimeout(()=>g.remove(),520);
+  }
+  function loop(){strike(); if(Math.random()<.35) setTimeout(strike,140); setTimeout(loop,R(900,2400))}
+  setTimeout(loop,600);
+})();
+
+document.querySelectorAll(".team-photo").forEach(im=>im.onclick=()=>{$("lbImg").src=im.src;$("lb").classList.add("on")});
+
+// Menú, nav y animaciones
+$("burger").onclick=()=>$("links").classList.toggle("open");
+document.querySelectorAll(".links a").forEach(a=>a.onclick=()=>$("links").classList.remove("open"));
+addEventListener("scroll",()=>$("nav").classList.toggle("scrolled",scrollY>30));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
