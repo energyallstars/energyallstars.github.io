@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /energycheer/
+
+Sitemap: https://energyallstars.github.io/sitemap.xml
