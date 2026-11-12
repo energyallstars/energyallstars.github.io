@@ -148,6 +148,10 @@ html,body{overflow-x:hidden}
 .lb.on{display:grid}.lb img{max-height:88vh;border-radius:14px;background:radial-gradient(circle,#3b1a6e,#060608 75%)}
 .event{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;background:linear-gradient(120deg,#2a1150,#17141f);border:1px solid rgba(180,77,255,.4);border-radius:26px;padding:1.6rem}
 .event img{width:110px;border-radius:16px}
+.ev-ico{width:110px;height:110px;border-radius:16px;display:grid;place-items:center;font-size:3rem;background:radial-gradient(circle,#4a1f8a,#17141f)}
+.win img{width:58px;height:58px;object-fit:contain;flex:none}
+.win-hero{grid-column:1/-1;justify-content:center;text-align:center;background:linear-gradient(120deg,#2a1150,#17141f);border-color:rgba(180,77,255,.45);font-family:Anton;font-size:clamp(1.3rem,3vw,1.9rem);letter-spacing:.5px;padding:1.4rem}
+@media(max-width:700px){.ev-ico{margin:auto}}
 .event h3{font-family:Anton;font-weight:400;font-size:1.9rem;letter-spacing:1px}
 .event p{color:var(--muted)}
 @media(max-width:700px){.event{grid-template-columns:1fr;text-align:center}.event img{margin:auto}}
@@ -211,8 +215,13 @@ const CLUB = {
   fotoHistoria: "fotos/piramide.webp",
 
   // Redes y contacto
-  whatsapp: "573143867977",   // número con 57 adelante, sin espacios ni +
-  telefonoVisible: "314 386 7977",
+  // Botones de WhatsApp (inscribirse / flotante) → José Vásquez
+  whatsapp: "573138358429",   // número con 57 adelante, sin espacios ni +
+  // Números que aparecen en Contacto: [nombre, número para WhatsApp, número visible]
+  directores: [
+    ["José Vásquez Castro", "573138358429", "313 835 8429"],
+    ["José Edwin Cárdenas", "573143657977", "314 365 7977"]
+  ],
   instagram: "energy_all_star",   // usuario sin @
   facebook: "https://www.facebook.com/share/19voq7xPz5/",
   tiktok: "",                          // usuario sin @ (vacío = no se muestra)
@@ -228,16 +237,14 @@ const CLUB = {
   // Galería manual (sube las fotos a la carpeta "fotos")
   galeria: ["fotos/g1.webp","fotos/g2.webp","fotos/g4.webp","fotos/g5.webp","fotos/g6.webp","fotos/g7.webp","fotos/g8.webp","fotos/g9.webp"],
 
-  // Próximo evento (vacío "" = no se muestra)
-  evento: {
-    nombre: "Christmas Championship 2K26",
-    fecha: "Domingo 15 de noviembre de 2026",
-    lugar: "Colegio San Viator · Autopista Norte #209-51, Bogotá",
-    imagen: "fotos/christmas.webp"
-  },
+  // Próximos eventos. Cada uno se oculta solo cuando pasa su "fin" (año-mes-día).
+  eventos: [
+    { nombre: "Christmas Championship 2K26", fecha: "Domingo 15 de noviembre de 2026", lugar: "Colegio San Viator · Autopista Norte #209-51, Bogotá", imagen: "fotos/christmas.webp", fin: "2026-11-15" },
+    { nombre: "Copbrands 2026", fecha: "10 de diciembre de 2026", lugar: "Cancún, México 🇲🇽", imagen: "", fin: "2026-12-10" }
+  ],
 
   numeros: [
-    ["2017", "Año de fundación"], ["12", "Equipos"], ["+20", "Años de experiencia del cuerpo técnico"], ["IDRD", "Reconocimiento deportivo"]
+    ["2017", "Año de fundación"], ["12", "Equipos"], ["+20", "Años de experiencia del cuerpo técnico"], ["6", "Equipos campeones en 2025"]
   ],
 
   historia: [
@@ -248,8 +255,9 @@ const CLUB = {
     ["2017", "En julio nace Energy All Stars, con un sueño: hacer brillar a nuestros deportistas en el tapete."],
     ["IDRD", "Obtenemos el reconocimiento deportivo del Instituto Distrital de Recreación y Deporte."],
     ["Sede", "Abrimos nuestra sede propia en Alquería La Fragua, junto a la Av. 68."],
-    ["2025", "Energy Black se corona campeón Nivel 1 Senior Mixto en el Invitacional de Campeones de Capital Cheer Colombia."],
-    ["2026", "12 equipos activos, de iniciación a nivel 3, rumbo a torneos nacionales e internacionales."]
+    ["2023", "Energy Purple se corona campeón internacional en Puerto Vallarta, México."],
+    ["2025", "6 equipos campeones en el Invitacional de Campeones de Santa Marta: White, Diamonds, Glow, Purple, Thunder y Black."],
+    ["2026", "12 equipos activos, de iniciación a nivel 3, rumbo a Copbrands 2026 en Cancún, México."]
   ],
 
   // Cuerpo técnico: [nombre, cargo]
@@ -258,7 +266,8 @@ const CLUB = {
     ["José Vásquez Castro", "Entrenador y director"],
     ["Valentina Bustos", "Coach"],
     ["Sebastián Ochoa", "Coach"],
-    ["Sofía Flórez", "Coach"]
+    ["Sofía Flórez", "Coach"],
+    ["Daniel Poveda", "Coach"]
   ],
 
   // Equipos: [nombre, nivel, color, edad, horario, coach, logo, FOTO DEL EQUIPO]
@@ -279,9 +288,17 @@ const CLUB = {
   ],
 
   // Logros: [medalla, título, competencia · año]  (vacío = se oculta la sección)
+  // Logros: [ícono o logo, título, detalle]
   logros: [
-    ["🏆", "Campeón 2025 · Energy Black", "Nivel 1 Senior Mixto · Invitacional de Campeones, Capital Cheer Colombia"]
+    ["🌎", "Campeón internacional · Energy Purple", "Puerto Vallarta, México · 2023"],
+    ["fotos/equipos/white.webp", "Campeón · Energy White", "Invitacional de Campeones · Santa Marta 2025"],
+    ["fotos/equipos/diamonds.webp", "Campeón · Energy Diamonds", "Invitacional de Campeones · Santa Marta 2025"],
+    ["fotos/equipos/glow.webp", "Campeón · Energy Glow", "Invitacional de Campeones · Santa Marta 2025"],
+    ["fotos/equipos/purple.webp", "Campeón · Energy Purple", "Invitacional de Campeones · Santa Marta 2025"],
+    ["fotos/equipos/thunder.webp", "Campeón · Energy Thunder", "Invitacional de Campeones · Santa Marta 2025"],
+    ["fotos/equipos/black.webp", "Campeón · Energy Black", "Nivel 1 Senior Mixto · Invitacional de Campeones · Santa Marta 2025"]
   ],
+  logroDestacado: "6 equipos campeones en el Invitacional de Campeones · Santa Marta 2025",
 
   mostrarTarifas: true,
   tarifas: [
@@ -434,7 +451,9 @@ $("fotoHistoria").innerHTML=C.fotoHistoria?`<img src="${C.fotoHistoria}" alt="Eq
 $("teams").innerHTML=C.equipos.map(([n,l,c,e,h,co,lg,ft])=>`<div class="team reveal" style="--c:${c}">${ft?`<img class="team-photo" src="${ft}" alt="Equipo ${n}">`:""}${lg?`<img class="team-logo" src="${lg}" alt="${n}">`:""}<span class="lvl">${l}</span><h3 style="color:${c}">${n}</h3><div class="meta">${e?`<span>👤 <b>${e}</b></span>`:""}${h?`<span>🕒 ${h}</span>`:""}${co?`<span>📣 Coach: ${co}</span>`:""}</div></div>`).join("");
 $("staffGrid").innerHTML=C.equipoTecnico.map(([n,c,f])=>`<div class="coach reveal"><div class="av">${f?`<img src="${f}" alt="${n}">`:n.split(" ").filter(w=>w.length>2).slice(0,2).map(w=>w[0]).join("")}</div><b>${n}</b><br><small>${c}</small></div>`).join("");
 
-if(C.evento&&C.evento.nombre){$("eventoBox").innerHTML=`<div class="event reveal">${C.evento.imagen?`<img src="${C.evento.imagen}" alt="${C.evento.nombre}">`:""}<div><span class="kicker">Próximo evento</span><h3>${C.evento.nombre}</h3><p>📅 ${C.evento.fecha}<br>📍 ${C.evento.lugar}</p></div><a class="btn btn-main" href="${ig}" target="_blank" rel="noopener">Síguelo en vivo</a></div>`}else $("eventoBox").remove();
+const hoy=new Date().toISOString().slice(0,10);
+const evs=(C.eventos||[]).filter(e=>e.nombre&&(!e.fin||e.fin>=hoy));
+if(evs.length){$("eventoBox").innerHTML=evs.map((ev,i)=>`<div class="event reveal" style="margin-bottom:1rem">${ev.imagen?`<img src="${ev.imagen}" alt="${ev.nombre}">`:`<div class="ev-ico">${i?"✈️":"🏆"}</div>`}<div><span class="kicker">${i?"Luego":"Próximo evento"}</span><h3>${ev.nombre}</h3><p>📅 ${ev.fecha}<br>📍 ${ev.lugar}</p></div><a class="btn btn-main" href="${ig}" target="_blank" rel="noopener">Síguelo en vivo</a></div>`).join("")}else $("eventoBox").remove();
 // Galería: Behold (automático) o fotos manuales
 if(C.beholdFeedId){
   $("feedBox").innerHTML=`<behold-widget feed-id="${C.beholdFeedId}"></behold-widget>`;
@@ -450,7 +469,7 @@ if(C.tiktok) soc+=`<a class="btn btn-ghost" href="https://tiktok.com/@${C.tiktok
 $("socialRow").innerHTML=soc;
 
 if(!C.logros.length){$("logros").remove();}
-else $("wins").innerHTML=C.logros.map(([m,t,d])=>`<div class="win reveal"><span class="medal">${m}</span><div><b>${t}</b><small>${d}</small></div></div>`).join("");
+else $("wins").innerHTML=(C.logroDestacado?`<div class="win win-hero reveal">🏆 ${C.logroDestacado}</div>`:"")+C.logros.map(([m,t,d])=>`<div class="win reveal">${m.includes("/")?`<img src="${m}" alt="">`:`<span class="medal">${m}</span>`}<div><b>${t}</b><small>${d}</small></div></div>`).join("");
 
 if(C.mostrarTarifas){
   $("plans").innerHTML=C.tarifas.map(([n,p,d,h])=>`<div class="plan reveal ${h?"hot":""}">${h?'<span class="kicker">⭐ Recomendado</span>':""}<h3>${n}</h3><div class="big grad-txt">${p}</div><p>${d}</p></div>`).join("")+
@@ -461,7 +480,7 @@ $("semi").innerHTML=C.semiPersonalizados.map(([n,l,p])=>`<div><span><b>${n}</b> 
 $("faq").innerHTML=C.preguntas.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
 
 const items=[
-  ["💬","WhatsApp",C.telefonoVisible,wa],
+  ...C.directores.map(([n,w,v])=>["💬","WhatsApp · "+n,v,`https://wa.me/${w}?text=${encodeURIComponent("¡Hola Energy All Stars! Quiero información 💜⭐")}`]),
   ["📍","Dirección",C.direccion,C.linkMapa],
   ["📷","Instagram","@"+C.instagram,ig],
   ["👨‍👩‍👧","Portal de papás","Pagos e inscripciones",C.portalPapas]
