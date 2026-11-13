@@ -42,7 +42,6 @@
   ]
 }
 </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -238,6 +237,23 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 .reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 .center{text-align:center}.center .lead{margin:auto}
+
+/* TIENDA */
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem;margin-top:2.5rem}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+.prod:hover{transform:translateY(-6px);border-color:rgba(180,77,255,.6)}
+.prod img{width:100%;aspect-ratio:4/5;object-fit:cover;cursor:zoom-in}
+.prod-in{padding:1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.prod h3{font-family:Anton;font-weight:400;font-size:1.6rem;letter-spacing:.5px}
+.prod p{color:var(--muted);font-size:.9rem;flex:1}
+.prod .price{font-weight:700;color:var(--cyan)}
+.prod .btn{justify-content:center;margin-top:.4rem;padding:.7rem .8rem;font-size:.82rem;white-space:nowrap}
+.prod-in{padding:1.1rem}
+
+/* ESPACIO PUBLICITARIO */
+.ad-space{border:2px dashed rgba(180,77,255,.55);border-radius:24px;min-height:180px;display:grid;place-items:center;text-align:center;background:linear-gradient(120deg,rgba(123,47,247,.12),rgba(23,20,31,.6));padding:2rem}
+.ad-space b{font-family:Anton;font-weight:400;font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:1px;text-transform:uppercase;color:#d9c2ff;display:block}
+.ad-space span{display:block;margin-top:.3rem;font-weight:600;font-size:1.1rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -250,7 +266,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-s
 const CLUB = {
   nombre: "Energy",
   apellido: "All Stars",
-  eslogan: "Club deportivo de cheerleading fundado en julio de 2017, con reconocimiento deportivo del IDRD, sede propia y entrenadores con más de 20 años de experiencia. Formamos atletas desde los 5 años hasta nivel 3.",
+  eslogan: "Club deportivo de cheerleading fundado en julio de 2017 en Bogotá, Colombia, con reconocimiento deportivo del IDRD, sede propia y entrenadores con más de 20 años de experiencia. Formamos atletas desde los 5 años hasta nivel 3.",
   logo: "fotos/logo.webp",
   fotoPortada: "",        // ej: "fotos/portada.jpg"
   fotoHistoria: "fotos/piramide.webp",
@@ -285,15 +301,15 @@ const CLUB = {
   ],
 
   numeros: [
-    ["2017", "Año de fundación"], ["12", "Equipos"], ["+20", "Años de experiencia del cuerpo técnico"], ["6", "Equipos campeones en 2025"]
+    ["2017", "Año de fundación · Bogotá, Colombia"], ["12", "Equipos"], ["+20", "Años de experiencia del cuerpo técnico"], ["6", "Equipos campeones en 2025"]
   ],
 
   historia: [
-    "Energy All Stars es un club deportivo de cheerleading fundado en julio de 2017 en Bogotá. Desde el primer día nos propusimos crear un espacio seguro y adecuado para la práctica del porrismo, dirigido por profesionales del entrenamiento deportivo.",
+    "Energy All Stars es un club deportivo de cheerleading fundado en julio de 2017 en Bogotá, Colombia. Desde el primer día nos propusimos crear un espacio seguro y adecuado para la práctica del porrismo, dirigido por profesionales del entrenamiento deportivo.",
     "Hoy contamos con sede propia, reconocimiento deportivo otorgado por el IDRD y doce equipos que van desde la iniciación hasta el nivel 3. Nuestros entrenadores y directivos tienen más de 20 años de experiencia y una sólida formación en el deporte."
   ],
   lineaDeTiempo: [
-    ["2017", "En julio nace Energy All Stars, con un sueño: hacer brillar a nuestros deportistas en el tapete."],
+    ["2017", "En julio nace Energy All Stars en Bogotá, Colombia, con un sueño: hacer brillar a nuestros deportistas en el tapete."],
     ["IDRD", "Obtenemos el reconocimiento deportivo del Instituto Distrital de Recreación y Deporte."],
     ["Sede", "Abrimos nuestra sede propia en Alquería La Fragua, junto a la Av. 68."],
     ["2023", "Energy Purple se corona campeón internacional en Puerto Vallarta, México."],
@@ -357,6 +373,15 @@ const CLUB = {
     ["Premium", "8 lecciones", "$143.000"]
   ],
 
+  // 🛍️ TIENDA: [nombre, descripción, imagen, precio, WhatsApp opcional]  (precio vacío = "Consulta el precio"; WhatsApp vacío = el principal; también puede ser una lista [[nombre, número], ...] para varios botones)
+  tienda: [
+    ["Energy Flyer 01", "Zapatilla de cheer ultraliviana, con malla transpirable y máximo agarre. Hecha para stunts, saltos y tumbling.", "fotos/tienda-flyer.webp", "$110.000"],
+    ["Energy Spark 02", "Zapatilla de cheer liviana y flexible, con malla transpirable y suela de agarre para entrenar y competir.", "fotos/tienda-spark.webp", "$110.000"],
+    ["Energy Base Pro 03", "Tenis de caña alta con soporte de tobillo: firmeza y estabilidad para bases y stunts.", "fotos/tienda-basepro.webp", "$120.000"],
+    ["Maletín Energy", "Maletín deportivo con bolsillo para llevar los tenis siempre limpios a competir.", "fotos/tienda-maletin.webp", "$120.000"],
+    ["Implementos de gimnasia", "Colchonetas de seguridad, planos inclinados (150 × 100 × 60 cm) y cilindros (100 × 69 cm) en espuma de densidad 23 o 26 certificada, con forro en duralona de tráfico pesado.", "fotos/tienda-implementos.webp", "Más información por WhatsApp", [["José Vásquez","573138358429"],["Edwin Cárdenas","573143657977"]]]
+  ],
+
   preguntas: [
     ["¿Desde qué edad pueden entrar?", "Desde los 5 años. Los equipos Nitro Pink y Nitro White reciben a los más pequeños, y hay equipos hasta los 18 años."],
     ["¿Necesitan experiencia previa?", "No. Nitro Pink y Nitro Green son para deportistas que inician su proceso y no piden habilidades previas. Los demás equipos tienen requisitos técnicos por nivel."],
@@ -373,7 +398,7 @@ const CLUB = {
   <a href="#inicio" class="logo"><span class="logo-mark" id="logoMark">★</span><span id="navName"></span></a>
   <div class="links" id="links">
     <a href="#historia">Historia</a><a href="#equipos">Equipos</a><a href="#galeria">Galería</a>
-    <a href="#staff">Coaches</a><a href="#planes" id="navPlanes">Planes</a><a href="#contacto">Contacto</a>
+    <a href="#staff">Coaches</a><a href="#planes" id="navPlanes">Planes</a><a href="#tienda">Tienda</a><a href="#contacto">Contacto</a>
   </div>
   <button class="burger" id="burger" aria-label="Menú">☰</button>
 </div></nav>
@@ -458,6 +483,16 @@ const CLUB = {
     <div id="faq"></div></div>
 </div></section>
 
+<section id="tienda"><div class="wrap">
+  <div class="center reveal"><span class="kicker">Tienda Energy</span><h2>Equípate como <span class="grad-txt">campeona</span></h2>
+  <p class="lead">Tenis de cheer, maletín e implementos de gimnasia. Escríbenos por WhatsApp para tallas, colores y precios.</p></div>
+  <div class="shop" id="shop"></div>
+</div></section>
+
+<section id="patrocinios" style="padding:40px 0"><div class="wrap">
+  <div class="ad-space reveal"><div><b>Espacio publicitario</b><span>Paute aquí</span></div></div>
+</div></section>
+
 <section id="contacto"><div class="wrap">
   <div class="cta reveal">
     <h2>¿Lista para brillar?</h2>
@@ -516,6 +551,11 @@ if(C.mostrarTarifas){
   $("plans").innerHTML=C.tarifas.map(([n,p,d,h])=>`<div class="plan reveal ${h?"hot":""}">${h?'<span class="kicker">⭐ Recomendado</span>':""}<h3>${n}</h3><div class="big grad-txt">${p}</div><p>${d}</p></div>`).join("")+
   `<p class="center" style="grid-column:1/-1;color:var(--muted);font-size:.9rem">${C.notaTarifas} · <a href="${C.portalPapas}" style="color:var(--cyan)">Portal de papás →</a></p>`;
 }else{ $("planes").remove(); $("navPlanes").remove(); }
+
+// Tienda
+$("shop").innerHTML=(C.tienda||[]).map(([n,d,img,p,w])=>`<div class="prod reveal"><img src="${img}" alt="${n}" loading="lazy"><div class="prod-in"><h3>${n}</h3><p>${d}</p><span class="price">${p||"Consulta el precio"}</span>${(Array.isArray(w)?w:[[w?"Más información":"Pedir por WhatsApp",w||C.whatsapp]]).map(([lab,num])=>`<a class="btn btn-main" target="_blank" rel="noopener" href="https://wa.me/${num}?text=${encodeURIComponent("¡Hola Energy All Stars! Me interesa: "+n+" 🛍️")}">💬 ${lab}</a>`).join("")}</div></div>`).join("");
+if(!(C.tienda||[]).length){$("tienda").remove();document.querySelector('a[href="#tienda"]').remove();}
+document.querySelectorAll(".prod img").forEach(im=>im.onclick=()=>{$("lbImg").src=im.src;$("lb").classList.add("on")});
 
 $("semi").innerHTML=C.semiPersonalizados.map(([n,l,p])=>`<div><span><b>${n}</b> · ${l}</span><span>${p}</span></div>`).join("");
 $("faq").innerHTML=C.preguntas.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
